@@ -1,6 +1,7 @@
 pub mod intro;
 use intro::sum_one_array;
 use intro::maximum_wealth;
+use intro::fizz_buzz;
 
 pub fn intro_execution_workspace() {
     let nums = vec![1,2,3,4];
@@ -23,4 +24,7 @@ pub fn intro_execution_workspace() {
 
     let n = maximum_wealth(nums);
     assert_eq!(n, 10);
+
+
+    fizz_buzz(3);
 }

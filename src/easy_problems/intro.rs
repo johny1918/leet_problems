@@ -66,3 +66,46 @@ pub fn maximum_wealth(accounts: Vec<Vec<i32>>) -> i32 {
     }
     max
 }
+
+/*
+    412. Fizz Buzz
+
+    Given an integer n, return a string array answer (1-indexed) where:
+
+    answer[i] == "FizzBuzz" if i is divisible by 3 and 5.
+    answer[i] == "Fizz" if i is divisible by 3.
+    answer[i] == "Buzz" if i is divisible by 5.
+    answer[i] == i (as a string) if none of the above conditions are true.
+    
+
+    Example 1:
+    Input: n = 3
+    Output: ["1","2","Fizz"]
+
+    Example 2:
+    Input: n = 5
+    Output: ["1","2","Fizz","4","Buzz"]
+
+    T: 15.33
+*/
+
+pub fn fizz_buzz(n: i32) -> Vec<String> {
+    let mut answer = vec![];
+
+    for i in 1..=n {
+        if i % 3 == 0 && i % 5 == 0  {
+            answer.push("FizzBuzz".to_string());
+        }
+        else if i % 3 == 0 {
+            answer.push("Fizz".to_string());
+        }
+        else if i % 5 == 0 {
+            answer.push("Buzz".to_string());
+        }
+        else {
+            answer.push(i.to_string());
+        }
+    }
+
+    answer
+}
