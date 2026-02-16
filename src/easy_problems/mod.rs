@@ -1,8 +1,5 @@
 pub mod intro;
-use intro::sum_one_array;
-use intro::maximum_wealth;
-use intro::fizz_buzz;
-use intro::number_of_steps;
+use intro::*;
 
 pub fn intro_execution_workspace() {
     let nums = vec![1,2,3,4];
@@ -31,4 +28,34 @@ pub fn intro_execution_workspace() {
 
     let n = number_of_steps(14);
     assert_eq!(6, n);
+
+    // [1, 2, 3, 4, 5] -> middle is 3
+    let mut n5 = ListNode::new(5);
+    let mut n4 = ListNode::new(4);
+    let mut n3 = ListNode::new(3);
+    let mut n2 = ListNode::new(2);
+    let mut n1 = ListNode::new(1);
+    n4.next = Some(Box::new(n5));
+    n3.next = Some(Box::new(n4));
+    n2.next = Some(Box::new(n3));
+    n1.next = Some(Box::new(n2));
+
+    let result = middle_node(Some(Box::new(n1)));
+    assert_eq!(result.as_ref().unwrap().val, 3);
+
+    // [1, 2, 3, 4, 5, 6] -> middle is 4 (second middle)
+    let mut n6 = ListNode::new(6);
+    let mut n5 = ListNode::new(5);
+    let mut n4 = ListNode::new(4);
+    let mut n3 = ListNode::new(3);
+    let mut n2 = ListNode::new(2);
+    let mut n1 = ListNode::new(1);
+    n5.next = Some(Box::new(n6));
+    n4.next = Some(Box::new(n5));
+    n3.next = Some(Box::new(n4));
+    n2.next = Some(Box::new(n3));
+    n1.next = Some(Box::new(n2));
+
+    let result = middle_node(Some(Box::new(n1)));
+    assert_eq!(result.as_ref().unwrap().val, 4);
 }

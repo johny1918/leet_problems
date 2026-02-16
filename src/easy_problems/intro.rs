@@ -155,3 +155,49 @@ pub fn number_of_steps(mut num: i32) -> i32 {
     }
     steps
 }
+
+/*
+
+    Given the head of a singly linked list, return the middle node of the linked list.
+
+    If there are two middle nodes, return the second middle node.
+
+ 
+
+    Example 1:
+
+    Input: head = [1,2,3,4,5]
+    Output: [3,4,5]
+    Explanation: The middle node of the list is node 3.
+
+    T: Used AI
+*/
+
+#[derive(PartialEq, Eq, Clone, Debug)]
+pub struct ListNode {
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
+}
+
+impl ListNode {
+    pub fn new(val: i32) -> Self {
+        ListNode { val, next: None }
+    }
+}
+
+pub fn middle_node(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+    let mut count = 0;
+    let mut current = &head;
+    while let Some(node) = current {
+        count += 1;
+        current = &node.next;
+    }
+
+    let mut head = head;
+    for _ in 0..(count / 2) {
+        if let Some(node) = head {
+            head = node.next;
+        }
+    }
+    head
+}
