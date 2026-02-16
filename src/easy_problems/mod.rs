@@ -2,6 +2,7 @@ pub mod intro;
 use intro::sum_one_array;
 use intro::maximum_wealth;
 use intro::fizz_buzz;
+use intro::number_of_steps;
 
 pub fn intro_execution_workspace() {
     let nums = vec![1,2,3,4];
@@ -27,4 +28,7 @@ pub fn intro_execution_workspace() {
 
 
     fizz_buzz(3);
+
+    let n = number_of_steps(14);
+    assert_eq!(6, n);
 }

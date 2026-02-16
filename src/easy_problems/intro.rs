@@ -89,6 +89,7 @@ pub fn maximum_wealth(accounts: Vec<Vec<i32>>) -> i32 {
     T: 15.33
 */
 
+
 pub fn fizz_buzz(n: i32) -> Vec<String> {
     let mut answer = vec![];
 
@@ -108,4 +109,49 @@ pub fn fizz_buzz(n: i32) -> Vec<String> {
     }
 
     answer
+}
+
+
+/*
+
+    Given an integer num, return the number of steps to reduce it to zero.
+
+    In one step, if the current number is even, you have to divide it by 2, 
+    otherwise, you have to subtract 1 from it.
+
+    
+
+    Example 1:
+
+    Input: num = 14
+    Output: 6
+    Explanation: 
+    Step 1) 14 is even; divide by 2 and obtain 7. 
+    Step 2) 7 is odd; subtract 1 and obtain 6.
+    Step 3) 6 is even; divide by 2 and obtain 3. 
+    Step 4) 3 is odd; subtract 1 and obtain 2. 
+    Step 5) 2 is even; divide by 2 and obtain 1. 
+    Step 6) 1 is odd; subtract 1 and obtain 0.
+
+    T: 8:43
+*/
+pub fn number_of_steps(mut num: i32) -> i32 {
+    let mut steps = 0;
+    loop {
+        if num != 0 {
+            if num % 2 == 0 {
+                num = num / 2;
+
+            }
+            else {
+                num -= 1;
+            }
+            steps += 1;
+        }
+        
+        if num == 0 {
+            break;
+        }
+    }
+    steps
 }
