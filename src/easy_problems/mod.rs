@@ -58,4 +58,14 @@ pub fn intro_execution_workspace() {
 
     let result = middle_node(Some(Box::new(n1)));
     assert_eq!(result.as_ref().unwrap().val, 4);
+
+    let ransom_note = "a".to_string();
+    let  magazine = "b".to_string();
+    let result = can_construct(ransom_note, magazine);
+    assert_eq!(false, result);
+
+    let ransom_note = "aa".to_string();
+    let  magazine = "aab".to_string();
+    let result = can_construct(ransom_note, magazine);
+    assert_eq!(true, result);
 }

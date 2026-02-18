@@ -201,3 +201,48 @@ pub fn middle_node(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
     }
     head
 }
+
+
+/*
+    Given two strings ransomNote and magazine, return true if ransomNote 
+    can be constructed by using the letters from magazine and false otherwise.
+
+    Each letter in magazine can only be used once in ransomNote.
+
+    
+
+    Example 1:
+
+    Input: ransomNote = "a", magazine = "b"
+    Output: false
+
+    Example 2:
+
+    Input: ransomNote = "aa", magazine = "ab"
+    Output: false
+
+    T: 42:21
+*/
+
+pub fn can_construct(ransom_note: String, magazine: String) -> bool {
+    let mut magazine_letters: HashMap<char, u32> = HashMap::new();
+
+    for i in magazine.as_bytes() {
+        let m = *i as char;
+
+        let current_count = magazine_letters.get(&m).unwrap_or(&0);
+        magazine_letters.insert(m, *current_count + 1);
+    }
+
+    for i in ransom_note.as_bytes() {
+        let r = *i as char;
+
+        let current_count = magazine_letters.get(&r).unwrap_or(&0);
+        if *current_count == 0 {
+            return false;
+        }
+        magazine_letters.insert(r, *current_count - 1);
+    }
+
+    true
+}
